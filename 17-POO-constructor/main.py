@@ -18,4 +18,5 @@ else:
     print("No es un objeto tipo carro")
 
 # VISIBILIDAD
-    
+    print(carro.soy_publico)
+    print(carro.getPrivado())

@@ -8,7 +8,7 @@ class Coche:
     plazas = 2
 
     soy_publico = "Hola, soy un atributo publico"
-    
+    __soyprivado = "Hola soy un atributo privado"
 
     def __init__(self, color, marca, modelo, veloidad, caballaje, plazas):
         self.color = color
@@ -19,6 +19,9 @@ class Coche:
         self.plazas = plazas
 
     #Metodos son acciones que hace el coche(funciones)
+    def getPrivado(self):
+        return self.__soyprivado
+
     def setColor(self, color):
         self.color = color
 
