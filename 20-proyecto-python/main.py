@@ -8,6 +8,9 @@ PROYECTO PYTHON MYSQL
 """
 
 from usuarios import acciones, usuario
+#import notas.nota as gaa
+
+#print(gaa.Nota.Listar(usuario))
 
 print("""
 ACCIONES DISPONIBLES:
