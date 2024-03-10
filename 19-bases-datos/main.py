@@ -13,7 +13,7 @@ database = mysql.connector.connect(
 #print(database)
 
 # CURSOS
-cursor = database.cursor()
+cursor = database.cursor(buffered=True)
 
 """
 # CREAR BASES DE DATOS
@@ -40,3 +40,32 @@ cursor.execute("SHOW TABLES")
 
 for table in cursor:
     print(table)
+
+#cursor.execute("INSERT INTO VEHICULOS VALUES (NULL, 'OPEL', 'ASTRA', '18500')")
+coches = [
+    ('SEAT','IBIZA','5000'),
+    ('RENAULT','TRIPIO','15000'),
+    ('CITROEN','SAXO','2000'),
+    ('MERCEDEZ','CLASE C','35000'),
+]
+
+#cursor.executemany("INSERT INTO VEHICULOS VALUES (NULL, %s, %s, %s )", coches)
+
+#database.commit()
+
+cursor.execute("SELECT * FROM VEHICULOS")
+resultado = cursor.fetchall()
+
+print("-----TODOS LOS COCHES-----")
+for coche in resultado:
+    print(coche)
+
+cursor.execute("DELETE FROM VEHICULOS WHERE MARCA = 'MERCEDEZ'")
+database.commit()
+
+print(cursor.rowcount, "BORRADOS")
+
+# ACTUALIZAR 
+cursor.execute("UPDATE VEHICULOS SET MODELO = 'LEON' WHERE MARCA = 'SEAT'")
+database.commit()
+print(cursor.rowcount, "ACTUALIZADOS")
